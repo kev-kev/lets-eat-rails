@@ -1,26 +1,21 @@
+require 'pry'
 class UsersController < ApplicationController
-  def create
-    @user = User.create(user_params)
-    if @user.valid?
-      token = encode_token({user_id: @user.id})
-      render json: {user: @user, token: token}
-    else
-      render json: {error: 'uWu oh no! your username or password is invalid 🥺👉👈'}
-    end
+  def new
+    @user = User.new
   end
 
-  def login
-    @user = User.find_by(username: user_params[:username])
-    if @user && @user.authenticate(user_params[:password])
-      token = encode_token({user_id: @user.id})
-      render json: {user: @user, token: token}, status: :accepted
+  def create
+    @user = User.new(user_params[:user])
+    if @user.save
+      session[:user_id] = @user.id
+      redirect_to recipes_path, status: 300
     else
-      render json: {error: 'uWu oh no! your username or password is invalid 🥺👉👈'}
+      render "new"
     end
   end
 
   private
     def user_params
-      params.require(:user).permit(:username, :password)
+      params.permit(:authenticity_token, :commit, :user => [:username, :password, :password_confirmation])
     end
 end 

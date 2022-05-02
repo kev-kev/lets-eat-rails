@@ -1,0 +1,35 @@
+%h2 new recipe
+
+=form_with model: @recipe do |form|
+  .name
+    =form.label :name
+    %br
+    =form.text_field :name
+    %br
+    -@recipe.errors.full_messages_for(:name).each do |msg|
+      %p= msg
+  .link
+    =form.label :link
+    %br
+    =form.text_field :link
+    %br
+    -@recipe.errors.full_messages_for(:link).each do |msg|
+      %p= msg
+  .img_url
+    =form.label :img_url
+    %br
+    =form.text_field :img_url
+    %br
+    -@recipe.errors.full_messages_for(:img_url).each do |msg|
+      %p= msg
+  .notes
+    =form.label :notes
+    %br
+    =form.text_field :notes
+    %br
+    -@recipe.errors.full_messages_for(:notes).each do |msg|
+      %p= msg
+  =hidden_field(:user_id, @user.id)
+  =form.submit
+  
+=link_to 'back', root_url

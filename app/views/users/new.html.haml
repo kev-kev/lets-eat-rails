@@ -1,0 +1,19 @@
+%h2 create account
+=form_with model: @user do |form|
+  .username
+    =form.label :username
+    %br
+    =form.text_field :username
+    %br
+  .password
+    =form.label :password
+    %br
+    =form.password_field :password
+    %br
+  .name
+    =form.label :password_confirmation
+    %br
+    =form.password_field :password_confirmation
+    %br
+  =form.submit
+=link_to 'back', login_path

@@ -1,0 +1,17 @@
+.recipe_img{
+  width: 200px;
+  height: 200px;
+}
+
+.card{
+  border: 1px solid black;
+  width: 220px;
+  margin: 1em
+}
+
+#index_grid{
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}

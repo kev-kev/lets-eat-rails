@@ -1,0 +1,15 @@
+%h2 recipes
+=link_to 'new recipe', new_recipe_path
+%br
+=link_to 'logout', logout_path
+#index_grid
+  -@recipes.each do |recipe|
+    .card
+      %strong= recipe.name
+      =link_to 'view', recipe
+      %br
+      =image_tag recipe.img_url, class: "recipe_img"
+      %br
+      %i= "submitted by: #{recipe.user.username}"
+
+    %br

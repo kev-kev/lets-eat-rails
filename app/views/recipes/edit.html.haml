@@ -1,0 +1,25 @@
+%h2 edit recipe
+=form_with model: @recipe do |form|
+  .name
+    =form.label :name
+    %br
+    =form.text_field :name
+    %br
+  .link
+    =form.label :link
+    %br
+    =form.text_field :link
+    %br
+  .img_url
+    =form.label :img_url
+    %br
+    =form.text_field :img_url
+    %br
+  .notes
+    =form.label :notes
+    %br
+    =form.text_field :notes
+    %br
+  =form.submit
+  
+=link_to 'back', recipes_path

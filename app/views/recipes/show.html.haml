@@ -1,0 +1,19 @@
+%h2= @recipe.name
+=image_tag @recipe.img_url, class: "recipe_img"
+%br
+=link_to 'visit recipe', @recipe.link
+%br
+%p= @recipe.notes
+.ingredients
+  %h4 ingredients
+  %ul
+    -@ingredients.each do |ingredient|
+      %li= "#{ingredient[:name]}: #{ingredient[:count]} #{ingredient[:unit]}"
+%i= "submitted by #{@recipe.user.username}"
+%br
+=link_to 'edit recipe', edit_recipe_path(@recipe)
+%br
+=link_to 'delete recipe', recipe_path(@recipe), data: {turbo_method: :delete, turbo_confirm: "are you sure?"}
+
+%br
+=link_to 'back', root_path

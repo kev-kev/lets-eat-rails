@@ -1,0 +1,10 @@
+%h2 login
+=form_with url: '/login', method: :post do |form|
+  .username
+    =form.label :username
+    =form.text_field :username
+  .password
+    =form.label :password
+    =form.password_field :password
+  =form.submit
+=link_to 'sign up', signup_path
